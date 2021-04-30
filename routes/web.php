@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Http\Controllers\PostController;
 
 /*
@@ -29,6 +30,18 @@ Route::get('tag/{id}',[
     'uses'=>'FrontEndController@tag',
     'as'=>'single.tag'
 ]);
+
+Route::get('result',function(){
+    dd('hello');
+    $posts=\App\Post::where('title','like','%'.request('query').'%')->get();
+    
+    return view('results')
+    ->with('posts',$posts)
+    ->with('categories',Category::take(4)->get())
+    ->with('query',request('query'));
+
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
