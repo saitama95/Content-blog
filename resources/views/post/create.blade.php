@@ -11,7 +11,7 @@
 @endif
 <div class="card">
     <div class="card-header text-success">
-        <h3>Create New Post</h3>
+        <h5>Create New Post</h5>
     </div>
     <div class="card-body">
         <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
@@ -22,8 +22,8 @@
             </div>
             <div class="form-group">
                 <label for="">Feature Image</label>
-                <input type="file" onchange="previewFile()" class="form-control" name="feature">
-                <img src="" id="image_id" width="100px" /> 
+                <input type="file" onchange="previewFile()" class="form-control img"name="feature">
+                <img src="" id="img" width="100px" /> 
             </div>
             <div class="form-group">
                 <label for="">Content</label>

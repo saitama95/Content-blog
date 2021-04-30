@@ -9,11 +9,11 @@
         @endforeach
     </ul>
 @endif
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Create New Post
+<div class="card">
+    <div class="card-header text-success">
+        <h5>Edit Post</h5>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <form action="{{route('post.update',['id'=>$id->id])}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="form-group">
@@ -65,3 +65,5 @@
     </div>
 </div>
 @endsection
+
+

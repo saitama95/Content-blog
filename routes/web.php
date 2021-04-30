@@ -13,18 +13,60 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('test',function(){
-//     return App\Tag::find(7)->posts;
-// });
+Route::get('/', [
+    'uses'=>'FrontEndController@index',
+    'as'=>'index'
+]);
+Route::get('post/{slug}',[
+    'uses'=>'FrontEndController@singlePost',
+    'as'=>'single.post'
+]);
+Route::get('category/{id}',[
+    'uses'=>'FrontEndController@category',
+    'as'=>'category.single'
+]);
+Route::get('tag/{id}',[
+    'uses'=>'FrontEndController@tag',
+    'as'=>'single.tag'
+]);
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
 
+    Route::get('user',[
+        'uses'=>'UsersController@index',
+        'as'=>'users.index'
+    ]);
+    Route::get('user/create',[
+        'uses'=>'UsersController@create',
+        'as'=>'users.create'
+    ]);
+    Route::post('user/store',[
+        'uses'=>'UsersController@store',
+        'as'=>'users.store'
+    ]);
+    Route::get('user/admin/{id}',[
+        'uses'=>'UsersController@admin',
+        'as'=>'users.admin'
+    ]);
+    Route::get('user/profile',[
+        'uses'=>'ProfileController@index',
+        'as'=>'users.profile'
+    ]);
+    Route::post('profile/update',[
+        'uses'=>'ProfileController@update',
+        'as'=>'profile.update'
+    ]);
+    Route::get('user/destroy/{id}',[
+        'uses'=>'UsersController@destroy',
+        'as'=>'users.destroy'
+    ]);
+    Route::get('user/not_admin/{id}',[
+        'uses'=>'UsersController@not_admin',
+        'as'=>'users.not_admin'
+    ]);
     Route::get('post/create',[
         'uses'=>'PostController@create',
         'as'=>'post.create'

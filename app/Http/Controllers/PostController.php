@@ -30,15 +30,16 @@ class PostController extends Controller
     public function create()
     {
         $category=Category::all();
+        $tags=Tag::all();
+        if(count($category)==0 || count($tags)==0){
 
-        if(count($category)==0){
-
-            Session::flash('info','You should create some category');
+            Session::flash('info','You should create some category and tags');
 
             return redirect()->back();
         }
-        return view('Post.create')->with('categories',Category::all())
-        ->with('tags',Tag::all());                               
+        return view('Post.create')
+        ->with('categories',Category::all())
+        ->with('tags',$tags);                               
     }
 
     /**
@@ -118,9 +119,10 @@ class PostController extends Controller
 
         if($request->hasFile('feature')){
 
-            $image_path=$post->features;
+            $image_path=$post->features;//get path of image form database
 
-            $image=$request->feature;
+            $image=$request->feature;//get image while user select image on view
+
             if(File::exists($image_path)){
                 File::delete($image_path);
             }
@@ -133,9 +135,10 @@ class PostController extends Controller
         $post->title=$request->title;
         $post->content=$request->content;
         $post->category_id=$request->category_id;
+        $post->tags()->sync($request->tag);
         $post->save();
         
-        $post->tags()->sync($request->tag);
+       
          
         Session::flash('success','Post Update Successfully');
         return redirect()->route('post');
@@ -163,13 +166,12 @@ class PostController extends Controller
 
         $post=Post::withTrashed()->where('id',$id)->first();
         $image_path=$post->features; 
-
         if(File::exists($image_path)) {
             File::delete($image_path);
-            $post->forceDelete();
-            Session::flash('success','Post Deleted Permanetly');
+        } 
+        $post->forceDelete();   
+        Session::flash('success','Post Deleted Permanetly');
             return redirect()->back();
-        }    
     }
     public function restore($id){
 

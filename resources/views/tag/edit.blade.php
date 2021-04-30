@@ -9,11 +9,11 @@
         @endforeach
     </ul>
 @endif
-<div class="panel panel-default">
-    <div class="panel-heading text-success">
-        <h2>Edit Tag</h2>
+<div class="card">
+    <div class="card-header text-success">
+        <h5>Edit Tag</h5>
     </div>
-    <div class="panel-body">
+    <div class="card-body">
         <form action="{{route('tag.update',['id'=>$id])}}" method="post">
             {{csrf_field()}}
             <div class="form-group">

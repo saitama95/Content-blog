@@ -50,11 +50,15 @@
                                 </li>
                             @endif
                         @else
+                        <div style="border-radius:50%,width:100%">
+                        <img src="{{asset(Auth::user()->profile->avatar)}}" alt="" width="40px">
+                        </div>
+                        
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
+                                </a>                               
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -81,9 +85,17 @@
                         <li class="list-group-item">
                             <a href="{{route('home')}}">Home</a>
                         </li>
+                        @if (Auth()->user()->admin)
                         <li class="list-group-item">
-                            <a href="{{route('category.index')}}">Category</a>
+                            <a href="{{route('users.index')}}">Users</a>
                         </li>
+                        <li class="list-group-item">
+                            <a href="{{route('users.create')}}">Create User</a>
+                        </li>
+                        @endif
+                        <li class="list-group-item">
+                            <a href="{{route('users.profile')}}">My Profile</a>
+                        </li>  
                         <li class="list-group-item">
                             <a href="{{route('post.create')}}">Create New Post</a>
                         </li>
@@ -95,6 +107,9 @@
                         </li>
                         <li class="list-group-item">
                             <a href="{{route('category.create')}}">Create Category</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="{{route('category.index')}}">Category</a>
                         </li>
                         <li class="list-group-item">
                             <a href="{{route('tag.create')}}">Create tag</a>
@@ -123,7 +138,7 @@
         @endif
 
         function previewFile(){
-            const preview = document.querySelector('img');
+            const preview = document.querySelector('.img');
             const file = document.querySelector('input[type=file]').files[0];
             const reader=new FileReader();
             reader.addEventListener('load',()=>{

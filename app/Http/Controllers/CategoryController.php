@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\PostController;
 
 class CategoryController extends Controller
 {
@@ -94,6 +95,11 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category=Category::find($id);
+            if($category->posts){
+                foreach ($category->posts as $post) {
+                    (new PostController)->kill($post->id);
+                }
+            }
         $category->delete();
         return redirect()->back();
     }
