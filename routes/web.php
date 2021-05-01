@@ -32,15 +32,14 @@ Route::get('tag/{id}',[
 ]);
 
 Route::get('result',function(){
-    dd('hello');
-    $posts=\App\Post::where('title','like','%'.request('query').'%')->get();
     
+    $posts=\App\Post::where('title','like','%'.request('query').'%')->get();
     return view('results')
     ->with('posts',$posts)
     ->with('categories',Category::take(4)->get())
     ->with('query',request('query'));
 
-});
+})->name('result');
 
 Auth::routes();
 

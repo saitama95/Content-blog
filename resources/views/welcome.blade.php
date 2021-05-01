@@ -122,7 +122,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="15_blog_details.html">{{$secondpost->title}}</a>
+                                        <a href="{{route('single.post',['slug'=>$secondpost->slug])}}">{{$secondpost->title}}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -172,7 +172,7 @@
                             <div class="post__content-info">
 
                                     <h2 class="post__title entry-title ">
-                                        <a href="15_blog_details.html">{{$thirdpost->title}}</a>
+                                        <a href="{{route('single.post',['slug'=>$thirdpost->slug])}}">{{$thirdpost->title}}</a>
                                     </h2>
 
                                     <div class="post-additional-info">
@@ -194,7 +194,7 @@
 
                                         <span class="post__comments">
                                             <a href="#"><i class="fa fa-comment-o" aria-hidden="true"></i></a>
-                                            6
+                                            9
                                         </span>
 
                                     </div>
@@ -231,7 +231,7 @@
                                     <div class="case-item__thumb">
                                         <img src="{{asset($post->features)}}" alt="our case">
                                     </div>
-                                    <h6 class="case-item__title"><a href="#">{{$post->title}}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{route('single.post',['slug'=>$post->slug])}}">{{$post->title}}</a></h6>
                                 </div>
                             </div>     
                             @endforeach
@@ -259,7 +259,7 @@
                                     <div class="case-item__thumb">
                                         <img src="{{asset($post->features)}}" alt="our case">
                                     </div>
-                                    <h6 class="case-item__title"><a href="#">{{$post->title}}</a></h6>
+                                    <h6 class="case-item__title"><a href="{{route('single.post',['slug'=>$post->slug])}}">{{$post->title}}</a></h6>
                                 </div>
                             </div>     
                             @endforeach
@@ -267,7 +267,7 @@
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
         </div>
     </div>
 
@@ -287,7 +287,6 @@
                             </button>
                         </form>
                         <div class="sub-title">Sign up for new Seosignt content, updates, surveys & offers.</div>
-
                     </div>
 
                     <div class="images-block">

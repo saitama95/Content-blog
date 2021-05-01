@@ -16,7 +16,7 @@
                             <div class="case-item__thumb">
                                 <img src="{{asset($post->features)}}" alt="our case">
                             </div>
-                            <h6 class="case-item__title"><a href="">{{$post->title}}</a></h6>
+                            <h6 class="case-item__title"><a href="{{route('single.post',['slug'=>$post->slug])}}">{{$post->title}}</a></h6>
                         </div>
                     </div>
                 </div>
