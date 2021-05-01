@@ -31,6 +31,11 @@
                                 <i class="seoicon-loupe"></i>
                             </a>
                         </li>
+                        <li class="search search_main" style="color: black; margin-top: 5px;">
+                            <a href="{{route('login')}}">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div>
         </div>

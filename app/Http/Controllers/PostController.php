@@ -7,6 +7,7 @@ use App\Post;
 use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
@@ -68,7 +69,8 @@ class PostController extends Controller
             'content'=>$request->content,
             'category_id'=>$request->category_id,
             'features'=>'uploads/post/'.$new_name,
-            'slug'=>Str::slug($request->title)
+            'slug'=>Str::slug($request->title),
+            'user_id'=>Auth::id()
         ]);
         $post->tags()->attach($request->tag);
         Session::flash('success','Post Create Successfully');

@@ -22,7 +22,7 @@
     <!--Styles for RTL-->
 
     <!--<link rel="stylesheet" type="text/css" href="app/css/rtl.css">-->
-
+    
     <!--External fonts-->
 
     <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
@@ -447,6 +447,6 @@
 
 
 <!-- ...end JS Script -->
-
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-608cd568116c7f41"></script> 
 </body>
 </html>
